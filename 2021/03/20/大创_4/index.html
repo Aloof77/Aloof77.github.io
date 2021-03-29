@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>大创_4 | AloofのBlog</title><meta name="keywords" content="大创,Cache"><meta name="author" content="Aloof"><meta name="copyright" content="Aloof"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ssp_19——构建驱逐集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大创_4">
+<meta property="og:url" content="https://aloof77.github.io/2021/03/20/%E5%A4%A7%E5%88%9B_4/index.html">
+<meta property="og:site_name" content="AloofのBlog">
+<meta property="og:description" content="ssp_19——构建驱逐集">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aloof77.github.io/2021/03/20/%E5%A4%A7%E5%88%9B_4/font.png">
+<meta property="article:published_time" content="2021-03-20T11:03:56.000Z">
+<meta property="article:modified_time" content="2021-03-20T15:29:33.300Z">
+<meta property="article:author" content="Aloof">
+<meta property="article:tag" content="大创">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aloof77.github.io/2021/03/20/%E5%A4%A7%E5%88%9B_4/font.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://aloof77.github.io/2021/03/20/%E5%A4%A7%E5%88%9B_4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a9cb0392955c54f59a126cf13f43e1b0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-20 23:29:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/2021/03/20/%E5%A4%A7%E5%88%9B_4/back.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AloofのBlog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">大创_4</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-20T11:03:56.000Z" title="发表于 2021-03-20 19:03:56">2021-03-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-20T15:29:33.300Z" title="更新于 2021-03-20 23:29:33">2021-03-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%88%9B/">大创</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="大创-4"><a href="#大创-4" class="headerlink" title="大创_4"></a>大创_4</h1><hr>
+<hr>
+<h2 id="ssp19——构建驱逐集"><a href="#ssp19——构建驱逐集" class="headerlink" title="ssp19——构建驱逐集"></a>ssp19——构建驱逐集</h2><hr>
+<p>在前面提出了用于非包容性缓存的EV构造算法，EV是一个完全占用特定缓存集的LLC切片的内存地址集合，EV也就是驱逐集.有厉害的前辈已经提出了一种用于包容性缓存的EV构造算法，但是它并不适用于非包容性缓存，原因在前面也说过(见<a href="https://aloof77.github.io/2021/03/14/%E5%A4%A7%E5%88%9B_2/">大创_2</a>)，而通过将其中一个重要的子程序check_conflict开发一个新的实现，可以解决这个问题.</p>
+<hr>
+<h3 id="检查冲突在EV构造算法中的作用"><a href="#检查冲突在EV构造算法中的作用" class="headerlink" title="检查冲突在EV构造算法中的作用"></a>检查冲突在EV构造算法中的作用</h3><p>在EV构造算法中，使用了一个叫做check_conflict(地址 x，集合U)的函数，如算法2所示.该函数会检查集合U中地址是否与LCC中的x冲突，如果U包含<em>W</em>-slice或更多地址，则该函数应返回true，这些地址映射到同一切片并设置为x；否则该函数应返回false. EV构造算法仅在此函数具有非常低的误报率和漏报率时才有效.</p>
+<p><img src="/images/%E5%A4%A7%E5%88%9B_4_%E7%AE%97%E6%B3%952.png" alt="算法2"></p>
+<p>想要知道为什么这样的要求如此重要，就必须考虑如何在EV构造算法中使用check_conflict.高级的想法是从一个已知与LLC切片中的x冲突的集合U开始，然后从集合U中移除地址y并获得新的集合U<sup>t</sup>=U-y.如果在检查U<sup>t</sup>时x的冲突消失，那么我们知道y一定对冲突产生了影响，在这种情况下y被认为在EV的x中.显然，该操作需要较低的误报率和漏报率来准确地观察冲突的消失。附录A提供了有关如何使用算法的更多详细信息，以及高精度实现的重要性.</p>
+<hr>
+<h3 id="新检查冲突功能"><a href="#新检查冲突功能" class="headerlink" title="新检查冲突功能"></a>新检查冲突功能</h3><p>首先讨论为什么之前的check_conflict函数在对非包容性缓存应用是具有较高的漏报率，然后展示如何修改函数来达到在非包含性缓存中共组的目的.以下讨论中，假设U中所有地址具有与x相同的LLC索引位.</p>
+<p><strong>Baseline</strong> <strong>check_conflict</strong> <strong>.</strong> (基函数) 在算法2中，基函数首先访问目标地址x，确保该行被高速缓存，然后访问U中所有的地址，如果稍后访问第x行只需要很短的时间，则意味着该行依然被缓存；否则，意味着该行已被逐出缓存.因此，访问等待时间可用于确定U是否包含足够多用于驱逐x的地址.</p>
+<p>当应用于非包容性缓存时，此功能有较高的漏报率。具体来看，当U包含足够的地址时，如果它们都在LLC中，将会驱逐x，该函数应该返回true，但是也可能返回false.为了了解这种漏报是如何发生的，先考虑一个最小的U，它具有映射到与x相同的LLC切片正好是<em>W</em>-slice地址.在非包容性缓存中，当访问U时，这些<em>W</em>-slice中的一些地址行可能保留在L2中，并且永远不会被从L2驱逐到LLC中.因此，这些地址没有机会与LLC中的x冲突，并且x不会被驱逐，导致漏报.此外，由于L2的替换算法既不是LRU也不是伪LRU，简单地多次访问U并不能保证较小的漏报率.</p>
+<p><strong>Naive New</strong> <strong>check_conflict</strong> **.**为了降低误报率，我们需要将U中的所有行从L2刷新到LLC中.如果有一个特殊的指令很方便可以做到这点那很好，但是x86架构中不存在这样的指令，因此，我们利用L2冲突来实现刷新效果。</p>
+<p>创建一个额外的地址集合，称为L2占用集，其中包含映射到与U相同的L2集的W<sub>L2</sub>地址.访问时，L2占用设置强制使U中所有的行被驱逐到LLC.修改的check_conflict函数如算法3所示.我们在访问x和基函数中的所有地址(第2-5行)后，访问L2占用集中的地址(第6-8行).通过这种方式，U中的每一行都被驱逐到x所在的LLC切片，并且我们可以显著降低漏报率.</p>
+<p><img src="/images/%E5%A4%A7%E5%88%9B_4_%E7%AE%97%E6%B3%953.png" alt="算法3"></p>
+<p>然而，这种单纯的方法具有很高的误报率，当U中没有足够的地址使从LLC切片驱逐x时，可能会出现误报，但是L2占用集中的某些地址最终会被驱逐到LLC，在它们的帮助下，会从LLC中驱逐x，此时函数应当返回false，但是事实上会返回true.</p>
+<p><strong>Reliable New</strong> <strong>check_conflict</strong> <strong>.</strong> 为了减少新函数中的误报率，我们需要确保对L2占用集的访问不会干扰LLC中U和x之间的冲突。我们可以通过利用L2和LLC之间的一对多映射关系来实现这一点.</p>
+<p>为了设计的可靠性，我们选择L2占用集，使其地址映射到与U中的地址相同的LLC集.前面说到，像L2这样的高级缓存包含的缓存集比LLC等低级缓存更少.</p>
+<p><code>例如，在Skylake-X中，L2具有1024组，而LLC切片具有2048组。</code></p>
+<p>相应地，L2使用来自物理地址的10位(位6-15)最为索引，而LLC切片使用11位(位6-16)作为索引.因此，可以通过繁转U中W<sub>12</sub>地址的位16来构造L2占用集，这些地址可用于从L2中驱逐U，但不与LLC中的U冲突.</p>
+<hr>
+<p><strong><em>总结一下，重新设计了一个可靠的check_conflict函数，具有低误报率和漏报率，且可用于非包容性缓存的EV构造算法.</em></strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/Aloof77">Aloof</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://aloof77.github.io">https://aloof77.github.io</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">此文章版权归Aloof所有，如有转载，请注明来自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E5%88%9B/">大创</a></div><div class="post_share"><div class="social-share" data-image="/2021/03/20/%E5%A4%A7%E5%88%9B_4/font.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/25/Reverse/"><img class="prev-cover" src="/2021/03/25/Reverse/font.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Reverse</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/20/Re_%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"><img class="next-cover" src="/2021/03/20/Re_%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/font.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Re_常用操作</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/03/14/大创_1/" title="大创_1"><img class="cover" src="/2021/03/14/%E5%A4%A7%E5%88%9B_1/font.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-14</div><div class="title">大创_1</div></div></a></div><div><a href="/2021/03/14/大创_2/" title="大创_2"><img class="cover" src="/2021/03/14/%E5%A4%A7%E5%88%9B_2/font.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-14</div><div class="title">大创_2</div></div></a></div><div><a href="/2021/03/14/大创_3/" title="大创_3"><img class="cover" src="/2021/03/14/%E5%A4%A7%E5%88%9B_3/font.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-14</div><div class="title">大创_3</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E5%88%9B-4"><span class="toc-number">1.</span> <span class="toc-text">大创_4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ssp19%E2%80%94%E2%80%94%E6%9E%84%E5%BB%BA%E9%A9%B1%E9%80%90%E9%9B%86"><span class="toc-number">1.1.</span> <span class="toc-text">ssp19——构建驱逐集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%86%B2%E7%AA%81%E5%9C%A8EV%E6%9E%84%E9%80%A0%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text">检查冲突在EV构造算法中的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E6%A3%80%E6%9F%A5%E5%86%B2%E7%AA%81%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.2.</span> <span class="toc-text">新检查冲突功能</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/2021/03/20/%E5%A4%A7%E5%88%9B_4/back.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 By Aloof</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Happy every day and night!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="255,255,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="听党指挥,能打胜仗,作风优良" data-fontsize="15px" data-random="false" async="async"></script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'Aloof77/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (false) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
